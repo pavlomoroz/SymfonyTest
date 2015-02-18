@@ -1,69 +1,61 @@
-Symfony Standard Edition
-========================
+Symfony Standard Edition + FOSUserBundle + HWIOAuthBundle
+=========================================================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony2
-application that you can use as the skeleton for your new applications.
+Installing and Configuring Symfony
+----------------------------------
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+[Installing] (http://symfony.com/doc/current/book/installation.html)
 
-What's inside?
---------------
+`curl -LsS http://symfony.com/installer > symfony.phar`
 
-The Symfony Standard Edition is configured with the following defaults:
+`sudo mv symfony.phar /usr/local/bin/symfony`
 
-  * An AppBundle you can use to start coding;
+`chmod a+x /usr/local/bin/symfony`
 
-  * Twig as the only configured template engine;
+To make your project work you need to add credentials to your app/config/parameters.yml.
 
-  * Doctrine ORM/DBAL;
+Setting up Permissions
+----------------------
 
-  * Swiftmailer;
+`cd ProjectDir`
 
-  * Annotations enabled for everything.
+`rm -rf app/cache/*`
 
-It comes pre-configured with the following bundles:
+`rm -rf app/logs/*`
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+Some systems don't support chmod +a, but do support another utility called setfacl. 
+You may need to enable ACL support on your partition and install setfacl before using it (as is the case with Ubuntu). 
+This uses a command to try to determine your web server user and set it as HTTPDUSER:
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+        HTTPDUSER=\`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1\`
+        
+        sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
+        
+        sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+Generating a New Bundle Skeleton
+--------------------------------
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+[New Bundle](http://symfony.com/doc/current/bundles/SensioGeneratorBundle/commands/generate_bundle.html)
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+`app/console generate:bundle`
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+Generating a New Doctrine Entity Stub
+-------------------------------------
 
-  * [**AsseticBundle**][12] - Adds support for Assetic, an asset processing
-    library
+[New Entity](http://symfony.com/doc/current/bundles/SensioGeneratorBundle/commands/generate_doctrine_entity.html)
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
+`app/console generate:doctrine:entity`
 
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
+Add FOSUserBundle
+-----------------
 
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
+[FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle)
 
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
+Add HWIOAuthBundle
+------------------
+
+[HWIOAuthBundle](https://github.com/hwi/HWIOAuthBundle)
 
 Enjoy!
-
-[1]:  http://symfony.com/doc/2.6/book/installation.html
-[6]:  http://symfony.com/doc/2.6/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  http://symfony.com/doc/2.6/book/doctrine.html
-[8]:  http://symfony.com/doc/2.6/book/templating.html
-[9]:  http://symfony.com/doc/2.6/book/security.html
-[10]: http://symfony.com/doc/2.6/cookbook/email.html
-[11]: http://symfony.com/doc/2.6/cookbook/logging/monolog.html
-[12]: http://symfony.com/doc/2.6/cookbook/assetic/asset_management.html
-[13]: http://symfony.com/doc/2.6/bundles/SensioGeneratorBundle/index.html
