@@ -1,5 +1,5 @@
-Symfony Standard Edition + FOSUserBundle + HWIOAuthBundle
-=========================================================
+Symfony Standard Edition + FOSUserBundle + HWIOAuthBundle (http://symfonytest.com/)
+===================================================================================
 
 Installing and Configuring Symfony
 ----------------------------------
