@@ -71,3 +71,28 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Malkos\UserBundle\Entity\User
+
+hwi_oauth:
+    firewall_name: main
+    fosub:
+        username_iterations: 30
+        properties:
+            facebook: facebook_id
+            google: google_id
+    resource_owners:
+        facebook:
+            type:                facebook
+            client_id:           1541945289409891
+            client_secret:       21c7da71c7de97fd3604dfd281f4f82e
+            scope:               "email"
+            infos_url:     "https://graph.facebook.com/me?fields=id,name,email"
+        google:
+            type:                google
+            client_id:           478330709692-d4rbb1v54s2nl2cf26v37aigk4cttmmt.apps.googleusercontent.com
+            client_secret:       wf6k79bRwhrwEutL3pT0dWut
+            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"

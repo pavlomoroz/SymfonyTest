@@ -6,3 +6,25 @@ malkos_user:
 app:
     resource: @AppBundle/Controller/
     type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+
+hwi_oauth_security:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /login/social
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /login/social
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /login/social
+
+facebook_login:
+    pattern: /login/check-facebook
+
+google_login:
+    pattern: /login/check-google

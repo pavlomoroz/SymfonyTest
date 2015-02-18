@@ -58,4 +58,9 @@ Add HWIOAuthBundle
 
 [HWIOAuthBundle](https://github.com/hwi/HWIOAuthBundle)
 
+FOSUserBundle + HWIOAuthBundle
+------------------------------
+
+[FOSUserBundle + HWIOAuthBundle](https://gist.github.com/danvbe/4476697)
+
 Enjoy!
