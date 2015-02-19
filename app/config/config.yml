@@ -79,10 +79,6 @@ fos_user:
 
 hwi_oauth:
     firewall_name: main
-    fosub:
-        properties:
-            facebook: facebook_id
-            google: google_id
     resource_owners:
         facebook:
             type:                facebook
