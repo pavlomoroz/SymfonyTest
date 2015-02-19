@@ -27,7 +27,7 @@ Some systems don't support chmod +a, but do support another utility called setfa
 You may need to enable ACL support on your partition and install setfacl before using it (as is the case with Ubuntu). 
 This uses a command to try to determine your web server user and set it as HTTPDUSER:
 
-        HTTPDUSER=\`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1\`
+        HTTPDUSER=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
         
         sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
         
