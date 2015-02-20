@@ -1,5 +1,7 @@
-Symfony Standard Edition + FOSUserBundle + HWIOAuthBundle (http://symfonytest.com/)
-===================================================================================
+Symfony Standard Edition + FOSUserBundle + HWIOAuthBundle
+=========================================================
+
+Create virtual host http://symfonytest.com/
 
 Installing and Configuring Symfony
 ----------------------------------
